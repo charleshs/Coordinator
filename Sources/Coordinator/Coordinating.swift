@@ -6,5 +6,5 @@ public protocol Coordinating: AnyObject {
 
     var uniqueIdentifier: UUID { get }
 
-    func start(onCompleted: @escaping (CoordinatedResult) -> Void)
+    func start(onCompleted: @escaping (CoordinatedResult) -> Void) throws
 }

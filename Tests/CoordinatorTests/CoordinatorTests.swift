@@ -4,22 +4,15 @@ import XCTest
 final class CoordinatorTests: XCTestCase {
     static var allTests = [
         ("testCoordinatedResult", testCoordinatedResult),
-        ("testRelease", testRelease),
+        ("testRelease_shouldNotCauseRetainCycle", testRelease_shouldNotCauseRetainCycle),
     ]
 
-    private var rootCoordinator: RootCoordinator!
-
-    override func setUpWithError() throws {
-        rootCoordinator = RootCoordinator()
-    }
-
-    override func tearDownWithError() throws {
-        rootCoordinator = nil
-    }
+    private weak var retainedCoordinator: MockCoordinator?
 
     func testCoordinatedResult() throws {
-        let promise = expectation(description: "Callback-CoordinatedResult")
+        let promise = expectation(description: "Completion-block-with-CoordinatedResult")
 
+        let rootCoordinator = RootCoordinator()
         let mockCoordinator = MockCoordinator()
         rootCoordinator.launch(mockCoordinator) { info in
             // async
@@ -29,34 +22,22 @@ final class CoordinatorTests: XCTestCase {
         wait(for: [promise], timeout: 5.0)
     }
 
-    func testRelease() throws {
+    func testRelease_shouldNotCauseRetainCycle() throws {
         let promise = expectation(description: "Coordinator-released-after-completion")
 
-        weak var retainedMockCoordinator: MockCoordinator?
+        let rootCoordinator: RootCoordinator = RootCoordinator()
         var mockCoordinator: MockCoordinator? = MockCoordinator()
         rootCoordinator.launch(mockCoordinator!) { info in
             // async
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 // executed after completion block
-                XCTAssertNil(retainedMockCoordinator)
+                XCTAssertNil(self.retainedCoordinator)
                 promise.fulfill()
             }
         }
-        retainedMockCoordinator = mockCoordinator
+        retainedCoordinator = mockCoordinator
         mockCoordinator = nil
-        XCTAssertNotNil(retainedMockCoordinator)
+        XCTAssertNotNil(retainedCoordinator)
         wait(for: [promise], timeout: 5.0)
-    }
-}
-
-private final class RootCoordinator: Coordinator<String> {
-    override func start(onCompleted: @escaping (String) -> Void) {}
-}
-
-private final class MockCoordinator: Coordinator<String> {
-    override func start(onCompleted: @escaping (String) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            onCompleted("\(type(of: self))")
-        }
     }
 }

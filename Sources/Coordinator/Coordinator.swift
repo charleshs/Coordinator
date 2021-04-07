@@ -26,14 +26,17 @@ extension Coordinator {
     ///   - coordinator: The coordinator to be started.
     ///   - completion: The closure that is invoked when the other coordinator completes.
     public func launch<T: Coordinating, U>(_ coordinator: T, completion: @escaping (U) -> Void) where U == T.CoordinatedResult {
-        coordinator.start(onCompleted: { [unowned self] value in
-            completion(value)
-            self.delegate?.coordinator(self, didComplete: coordinator)
-            self.release(coordinator)
-        })
-
-        children[coordinator.uniqueIdentifier] = coordinator
-        delegate?.coordinator(self, didLaunch: coordinator)
+        do {
+            try coordinator.start(onCompleted: { [weak self] value in
+                completion(value)
+                self?.release(coordinator)
+            })
+            children[coordinator.uniqueIdentifier] = coordinator
+            delegate?.coordinator(self, didLaunch: coordinator)
+        }
+        catch {
+            delegate?.coordinator(self, didFailLaunching: coordinator, with: error)
+        }
     }
 
     private func release<T: Coordinating>(_ coordinator: T) {
