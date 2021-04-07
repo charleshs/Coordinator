@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Coordinator
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
