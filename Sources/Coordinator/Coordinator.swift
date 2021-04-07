@@ -5,6 +5,8 @@ open class Coordinator<CoordinatedResult>: Coordinating {
     /// A globally unique identifier to distinguish the `Coordinator` object.
     public var uniqueIdentifier: UUID = UUID()
 
+    public weak var delegate: CoordinatorDelegate?
+
     private var children: [UUID: AnyObject] = [:]
 
     public init() {}
@@ -26,13 +28,16 @@ extension Coordinator {
     public func launch<T: Coordinating, U>(_ coordinator: T, completion: @escaping (U) -> Void) where U == T.CoordinatedResult {
         coordinator.start(onCompleted: { [unowned self] value in
             completion(value)
+            self.delegate?.coordinator(self, didComplete: coordinator)
             self.release(coordinator)
         })
 
         children[coordinator.uniqueIdentifier] = coordinator
+        delegate?.coordinator(self, didLaunch: coordinator)
     }
 
     private func release<T: Coordinating>(_ coordinator: T) {
         children.removeValue(forKey: coordinator.uniqueIdentifier)
+        delegate?.coordinator(self, didRelease: coordinator)
     }
 }
