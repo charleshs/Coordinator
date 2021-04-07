@@ -15,7 +15,9 @@ extension Storyboarded where Self: UIViewController {
     /// Loads a view controller from the specified storyboard.
     /// - Parameter identifier: A piece of string identifying the view controller. Use the name of class if passing `nil`.
     /// - Returns: A view controller of the Storyboarded-conforming type.
-    public static func initFromStoryboard(identifier: String = String(describing: self)) -> Self {
+    public static func initFromStoryboard(identifier: String? = nil) -> Self {
+        let identifier = identifier ?? String(describing: self)
+
         if #available(iOS 13.0, tvOS 13.0, *) {
             return storyboard.instantiateViewController(identifier: identifier) as! Self
         } else {
