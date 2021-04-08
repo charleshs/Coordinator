@@ -1,10 +1,3 @@
-//
-//  AppCoordinator.swift
-//  CoordinatorDemo
-//
-//  Created by Charles Hsieh on 2021/4/7.
-//
-
 import Coordinator
 import UIKit
 
@@ -16,7 +9,11 @@ final class AppCoordinator: Coordinator<Bool> {
     }
 
     override func start(onCompleted: @escaping (Bool) -> Void) {
-        window.rootViewController = ViewController.initFromStoryboard()
+        let navController = UINavigationController()
+
+        launch(ContactListCoordinator(presenter: navController))
+
+        window.rootViewController = navController
         window.makeKeyAndVisible()
     }
 }
