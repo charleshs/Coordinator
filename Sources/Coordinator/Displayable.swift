@@ -27,6 +27,8 @@ extension Displayable where Self: Coordinating {
     }
 }
 
+extension Coordinator: Displayable {}
+
 private extension UIViewController {
     func appended(to viewControllers: [UIViewController]?) -> [UIViewController] {
         guard let viewControllers = viewControllers else {
