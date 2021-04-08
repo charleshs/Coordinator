@@ -11,7 +11,7 @@ public protocol Displayable {
 }
 
 extension Displayable where Self: Coordinating {
-    public func display(_ viewController: UIViewController, by presentingContext: UIViewController, tabNavigation: UINavigationController?) {
+    public func display(_ viewController: UIViewController, by presentingContext: UIViewController, tabNavigation: UINavigationController? = nil) {
         switch presentingContext {
         case let tab as UITabBarController:
             let displayingVC = tabNavigation.map { navController -> UIViewController in
