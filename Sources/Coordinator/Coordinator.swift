@@ -29,7 +29,7 @@ extension Coordinator {
     ///   - completion: The closure that is invoked when the other coordinator completes.
     public func launch<T: Coordinating, U>(_ coordinator: T, completion: ((U) -> Void)? = nil) where U == T.CoordinatedResult {
         do {
-            try coordinator.start(onCompleted: { [weak self] value in
+            try coordinator.start(onCompleted: { [weak self, unowned coordinator] value in
                 completion?(value)
                 self?.release(coordinator)
             })
