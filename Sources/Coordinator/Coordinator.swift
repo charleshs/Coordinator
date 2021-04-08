@@ -2,13 +2,15 @@ import Foundation
 
 /// The base implementation of `Coordinating` generic over the `CoordinatedResult`.
 open class Coordinator<CoordinatedResult>: Coordinating {
-    /// A globally unique identifier to distinguish the `Coordinator` object.
-    public var uniqueIdentifier: UUID = UUID()
-
+    /// The delegated object to be notified of coordinating events.
     public weak var delegate: CoordinatorDelegate?
 
-    private var children: [UUID: AnyObject] = [:]
+    /// Coordinators managed by this coordinator.
+    public private(set) var children: [UUID: AnyObject] = [:]
 
+    /// A globally unique identifier to distinguish the `Coordinator` object.
+    public let uniqueIdentifier: UUID = UUID()
+    
     public init() {}
 
     /// Starts the current coordinator.
