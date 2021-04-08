@@ -15,7 +15,7 @@ open class Coordinator<CoordinatedResult>: Coordinating {
     /// - Parameter onCompleted: The closure that is invoked when the coordinator completes.
     ///
     /// Subclasses must override this method and should not call `super.start(onCompleted:)` in its implementation.
-    open func start(onCompleted: @escaping (CoordinatedResult) -> Void) {
+    open func start(onCompleted: @escaping (CoordinatedResult) -> Void) throws {
         assertionFailure("Type `\(type(of: self))` must override `start(onCompleted:)` and not call `super.start(onCompleted:)` in its implementation.")
     }
 }
