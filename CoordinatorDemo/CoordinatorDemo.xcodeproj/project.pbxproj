@@ -13,6 +13,8 @@
 		7C3FB42B261F161E00E182FF /* ContactEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FB42A261F161E00E182FF /* ContactEditorCoordinator.swift */; };
 		7C3FB433261F17EA00E182FF /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FB432261F17EA00E182FF /* BaseCoordinator.swift */; };
 		7C3FB437261F198100E182FF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FB436261F198100E182FF /* BaseViewController.swift */; };
+		7C4D3710262005A0006D8E36 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D370F262005A0006D8E36 /* ContactModel.swift */; };
+		7C4D371426203AC7006D8E36 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D371326203AC7006D8E36 /* ContactManager.swift */; };
 		7C5C8ACB261DB79C001B7C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C8ACA261DB79C001B7C12 /* AppDelegate.swift */; };
 		7C5C8ACF261DB79C001B7C12 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C8ACE261DB79C001B7C12 /* ContactListViewController.swift */; };
 		7C5C8AD2261DB79C001B7C12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5C8AD0261DB79C001B7C12 /* Main.storyboard */; };
@@ -20,6 +22,9 @@
 		7C5C8AD7261DB79D001B7C12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5C8AD5261DB79D001B7C12 /* LaunchScreen.storyboard */; };
 		7C5C8B35261DBD3B001B7C12 /* Coordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5C8B34261DBD3B001B7C12 /* Coordinator */; };
 		7C5C8B39261DC0D2001B7C12 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C8B38261DC0D2001B7C12 /* AppCoordinator.swift */; };
+		7CED2DC0262457B40071DD41 /* ContactListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CED2DBE262457B40071DD41 /* ContactListTableViewCell.swift */; };
+		7CED2DC1262457B40071DD41 /* ContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CED2DBF262457B40071DD41 /* ContactListTableViewCell.xib */; };
+		7CED2DC526245AE30071DD41 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CED2DC426245AE30071DD41 /* BaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,8 @@
 		7C3FB42A261F161E00E182FF /* ContactEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditorCoordinator.swift; sourceTree = "<group>"; };
 		7C3FB432261F17EA00E182FF /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		7C3FB436261F198100E182FF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7C4D370F262005A0006D8E36 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		7C4D371326203AC7006D8E36 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		7C5C8AC7261DB79C001B7C12 /* CoordinatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5C8ACA261DB79C001B7C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C5C8ACE261DB79C001B7C12 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +45,9 @@
 		7C5C8AD8261DB79D001B7C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C5C8B23261DB7DA001B7C12 /* Coordinator */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Coordinator; path = ..; sourceTree = "<group>"; };
 		7C5C8B38261DC0D2001B7C12 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7CED2DBE262457B40071DD41 /* ContactListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewCell.swift; sourceTree = "<group>"; };
+		7CED2DBF262457B40071DD41 /* ContactListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewCell.xib; sourceTree = "<group>"; };
+		7CED2DC426245AE30071DD41 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				7C3FB432261F17EA00E182FF /* BaseCoordinator.swift */,
+				7CED2DC426245AE30071DD41 /* BaseTableViewCell.swift */,
 				7C3FB436261F198100E182FF /* BaseViewController.swift */,
 			);
 			path = Base;
@@ -80,11 +91,28 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		7C4D370E26200589006D8E36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D370F262005A0006D8E36 /* ContactModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C4D371226203AAB006D8E36 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D371326203AC7006D8E36 /* ContactManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		7C59F3CF261F0E11005F8F8C /* Contact List */ = {
 			isa = PBXGroup;
 			children = (
 				7C3FB420261F0ED300E182FF /* ContactListCoordinator.swift */,
 				7C5C8ACE261DB79C001B7C12 /* ContactListViewController.swift */,
+				7CED2DBD2624577A0071DD41 /* Cells */,
 			);
 			path = "Contact List";
 			sourceTree = "<group>";
@@ -110,6 +138,8 @@
 		7C5C8AC9261DB79C001B7C12 /* CoordinatorDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7C4D371226203AAB006D8E36 /* Manager */,
+				7C4D370E26200589006D8E36 /* Model */,
 				7C3FB43D261F1B0500E182FF /* App */,
 				7C3FB43C261F1AF900E182FF /* Base */,
 				7C3FB424261F14AD00E182FF /* Contact Editor */,
@@ -127,6 +157,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CED2DBD2624577A0071DD41 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7CED2DBE262457B40071DD41 /* ContactListTableViewCell.swift */,
+				7CED2DBF262457B40071DD41 /* ContactListTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CED2DC1262457B40071DD41 /* ContactListTableViewCell.xib in Resources */,
 				7C5C8AD7261DB79D001B7C12 /* LaunchScreen.storyboard in Resources */,
 				7C5C8AD4261DB79D001B7C12 /* Assets.xcassets in Resources */,
 				7C3FB428261F14F700E182FF /* ContactEditorViewController.xib in Resources */,
@@ -203,11 +243,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4D371426203AC7006D8E36 /* ContactManager.swift in Sources */,
 				7C5C8B39261DC0D2001B7C12 /* AppCoordinator.swift in Sources */,
 				7C5C8ACF261DB79C001B7C12 /* ContactListViewController.swift in Sources */,
+				7C4D3710262005A0006D8E36 /* ContactModel.swift in Sources */,
+				7CED2DC526245AE30071DD41 /* BaseTableViewCell.swift in Sources */,
 				7C3FB42B261F161E00E182FF /* ContactEditorCoordinator.swift in Sources */,
 				7C5C8ACB261DB79C001B7C12 /* AppDelegate.swift in Sources */,
 				7C3FB433261F17EA00E182FF /* BaseCoordinator.swift in Sources */,
+				7CED2DC0262457B40071DD41 /* ContactListTableViewCell.swift in Sources */,
 				7C3FB437261F198100E182FF /* BaseViewController.swift in Sources */,
 				7C3FB427261F14F700E182FF /* ContactEditorViewController.swift in Sources */,
 				7C3FB421261F0ED300E182FF /* ContactListCoordinator.swift in Sources */,

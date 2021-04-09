@@ -2,7 +2,7 @@ import Coordinator
 import UIKit
 
 class BaseCoordinator<T>: Coordinator<T> {
-    typealias Completion = (CoordinatedResult) -> Void
+    typealias Completion = (T) -> Void
     
     let presenter: UIViewController
 

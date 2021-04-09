@@ -2,15 +2,14 @@ import Combine
 import Coordinator
 import UIKit
 
-final class ContactEditorCoordinator: BaseCoordinator<Bool> {
+final class ContactEditorCoordinator: BaseCoordinator<ContactModel?> {
     private var disposables: Set<AnyCancellable> = []
 
-    override func start(onCompleted: @escaping (Bool) -> Void) throws {
+    override func start(onCompleted: @escaping Completion) throws {
         let contactEditorVC = ContactEditorViewController(nibName: nil, bundle: nil)
 
         contactEditorVC.$goBack
-            .compactMap { $0 }
-            .sink { _ in onCompleted(true) }
+            .sink { onCompleted($0) }
             .store(in: &disposables)
 
         display(contactEditorVC, by: presenter)

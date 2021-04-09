@@ -3,7 +3,6 @@ import Coordinator
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     private var appCoordinator: AppCoordinator!
