@@ -24,6 +24,19 @@ extension Storyboarded where Self: UIViewController {
             return storyboard.instantiateViewController(withIdentifier: identifier) as! Self
         }
     }
+
+    /// Creates the specified view controller from the storyboard and initializes it using your custom initialization code.
+    /// - Parameters:
+    ///   - identifier: A piece of string identifying the view controller. Use the name of class if passing `nil`.
+    ///   - creator: A block containing your custom creation code for the view controller.
+    @available(iOS 13.0, tvOS 13.0, *)
+    public static func initFromStoryboard(identifier: String? = nil, creator: @escaping (NSCoder) -> Self?) -> Self {
+        let identifier = identifier ?? String(describing: self)
+
+        return storyboard.instantiateViewController(identifier: identifier) { coder -> Self? in
+            return creator(coder)
+        }
+    }
 }
 
 private extension UIStoryboard {
