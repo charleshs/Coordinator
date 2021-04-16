@@ -12,12 +12,11 @@ final class ContactListCoordinator: BaseCoordinator<Bool> {
             ContactListViewController(coder: coder, contactRepository: contactManager, contactOperation: contactManager)
         })
 
-        contactListVC.title = "Contacts"
+        contactListVC.$goEditing
+            .sink { [weak self] contact in
+                let presenter: UIViewController = contactListVC.navigationController ?? contactListVC
+                let coordinator = ContactEditorCoordinator(contact: contact, presenter: presenter)
 
-        contactListVC.$didTapAddBarButton
-            .compactMap { $0 }
-            .sink { [weak self] _ in
-                let coordinator = ContactEditorCoordinator(presenter: contactListVC.navigationController ?? contactListVC)
                 self?.launch(coordinator) { [weak contactListVC] contact in
                     guard let contact = contact else { return }
                     contactListVC?.update(contact: contact)

@@ -3,15 +3,13 @@ import Coordinator
 import UIKit
 
 final class ContactListViewController: BaseViewController, Storyboarded {
-    @Published private(set) var didTapAddBarButton: Void?
+    @Published private(set) var goEditing: ContactModel?
 
     @IBOutlet private var listTableView: UITableView!
 
     private let contactRepository: ContactRepository
     private let contactOperation: ContactOperation
-
     private var contacts: [ContactModel] = []
-
     private var disposable: Set<AnyCancellable> = []
 
     init?(coder: NSCoder, contactRepository: ContactRepository, contactOperation: ContactOperation) {
@@ -27,7 +25,6 @@ final class ContactListViewController: BaseViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationAddItem()
         setup()
         subscribe()
     }
@@ -37,6 +34,10 @@ final class ContactListViewController: BaseViewController, Storyboarded {
     }
 
     private func setup() {
+        title = "連絡人列表"
+
+        setupNavigationAddItem()
+
         listTableView.delegate = self
         listTableView.dataSource = self
         ContactListTableViewCell.registerNib(in: listTableView)
@@ -59,7 +60,7 @@ final class ContactListViewController: BaseViewController, Storyboarded {
 
     @objc private func tapAddBarButton() {
         print("Pressed add bar button.")
-        didTapAddBarButton = ()
+        goEditing = nil
     }
 }
 
@@ -72,5 +73,10 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
         let cell = ContactListTableViewCell.dequeued(from: tableView, for: indexPath)
         cell.render(with: contacts[indexPath.row])
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        goEditing = contacts[indexPath.row]
     }
 }

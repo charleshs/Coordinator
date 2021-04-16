@@ -14,7 +14,7 @@ final class ContactManager: ContactRepository, ContactOperation {
         return $contacts.eraseToAnyPublisher()
     }()
 
-    @Published private var contacts: [ContactModel] = []
+    @Published private var contacts: [ContactModel] = ContactModel.data
 
     func update(contact: ContactModel) {
         if let index = contacts.firstIndex(of: contact) {

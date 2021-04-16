@@ -1,6 +1,14 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     deinit {
         print("deinit - \(type(of: self))")
     }
